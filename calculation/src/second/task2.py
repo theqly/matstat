@@ -44,8 +44,8 @@ y_average_square = y_average_square / y_n
 x_S_square = x_average_square - (x_average * x_average)
 y_S_square = y_average_square - (y_average * y_average)
 
-x_S0_square = (x_n/(x_n - 1)) / x_S_square
-y_S0_square = (y_n/(y_n - 1)) / y_S_square
+x_S0_square = (x_n/(x_n - 1)) * x_S_square
+y_S0_square = (y_n/(y_n - 1)) * y_S_square
 
 d_T = ((x_average - y_average) * sqrt((x_n*y_n)/(x_n+y_n)))/sqrt(((x_n-1)*x_S0_square + (y_n-1)*y_S0_square)/(n - 2))
 

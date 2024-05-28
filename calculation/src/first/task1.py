@@ -5,7 +5,7 @@ file = open("../../data/normal_distribution.txt")
 data = []
 a = -2
 sigma = 0.5
-e = 0.16
+e = 0.01
 n = 50
 t = stats.norm.ppf(1 - (e / 2))
 print(t)

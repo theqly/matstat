@@ -4,7 +4,9 @@ from scipy import stats
 file = open("../../data/uniform_distribution.txt")
 data = []
 n = 30
-e = 0.18
+e = 0.01
+c = stats.kstwobign.ppf(1 - e)
+print(c)
 
 for line in file:
     numbers = [float(x) for x in line.strip().split()]
@@ -12,19 +14,31 @@ for line in file:
 
 assert (len(data) == n)
 
-d_K = 0
-i = 1
+
+max_difference = 0
+point = 0
 data.sort()
+i = 1
+point = 0
+
 for x in data:
     local_max = 0
-    if (x - ((i - 1) / n)) > (x - (i / n)):
-        local_max = x - ((i - 1) / n)
+    local_i = 0
+    if abs(x - ((i - 1) / n)) > abs(x - (i / n)):
+        local_max = abs(x - ((i - 1) / n))
+        local_i = i - 1
     else:
-        local_max = x - (i / n)
-    if local_max > d_K: d_K = local_max
+        local_max = abs(x - (i / n))
+        local_i = i
+    if local_max >= max_difference:
+        max_difference = local_max
+        point = local_i
+    i += 1
 
-print(d_K)
-
-d_K = d_K * sqrt(n)
-
-print(d_K)
+#неправильно ищет точку, в которой достигается максимальное значение. хз в чем трабл
+d_K = max_difference * sqrt(n)
+print(data)
+print("max difference: " + str(max_difference))
+print("in point: " + str(data[point - 1]))
+print("d_K: " + str(d_K))
+print("i: " + str(point))

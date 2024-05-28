@@ -30,6 +30,6 @@ square_x_average = square_x_average / n
 S_square = square_x_average - (x_average * x_average)
 S0_square = (n/(n-1))*S_square
 
-print("So: " + str(S0_square))
+print("So_square: " + str(S0_square))
 print("left: " + str(x_average - (c * (sqrt(S0_square) / sqrt(n)))))
 print("right: " + str(x_average + (c * (sqrt(S0_square) / sqrt(n)))))
