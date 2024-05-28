@@ -35,9 +35,10 @@ for x in data:
         point = local_i
     i += 1
 
-#неправильно ищет точку, в которой достигается максимальное значение. хз в чем трабл
 d_K = max_difference * sqrt(n)
-print(data)
+p_value = 1 - stats.kstwobign.cdf(d_K)
+
+print("p-value: " + str(p_value))
 print("max difference: " + str(max_difference))
 print("in point: " + str(data[point - 1]))
 print("d_K: " + str(d_K))
